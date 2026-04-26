@@ -1,0 +1,19 @@
+workflows:
+  android-workflow:
+    name: Android Build
+    environment:
+      flutter: stable
+    scripts:
+      - name: Create Android platform
+        script: |
+          #!/bin/sh
+          set -e
+          flutter create --platforms=android .
+      - name: Get dependencies
+        script: | 
+          flutter pub get
+      - name: Build APK
+        script: | 
+          flutter build apk --debug
+    artifacts:
+      - build/app/outputs/flutter-apk/app-debug.apk
