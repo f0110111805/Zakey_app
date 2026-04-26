@@ -20,6 +20,12 @@ jobs:
         with:
           flutter-version: '3.19.6'
           
+      - name: Remove old android folder
+        run: rm -rf android ios
+          
+      - name: Recreate project files
+        run: flutter create --org com.example --project-name zakey_app .
+        
       - name: Install dependencies
         run: flutter pub get
         
